@@ -2,27 +2,31 @@
 <html>
 <head>
 <title>For My Bhondu 💖</title>
+
 <style>
 body{
 margin:0;
 height:100vh;
-background:radial-gradient(circle,#ff9a9e,#fad0c4);
+background:linear-gradient(120deg,#ff9a9e,#fad0c4);
 font-family:'Comic Sans MS',cursive;
 overflow:hidden;
 text-align:center;
 }
+
 h1{
 margin-top:120px;
 color:#c2185b;
 font-size:3em;
-text-shadow:0 0 10px pink;
+text-shadow:0 0 20px #ff80ab;
 animation:pulse 2s infinite;
 }
+
 @keyframes pulse{
 0%{transform:scale(1);}
 50%{transform:scale(1.05);}
 100%{transform:scale(1);}
 }
+
 button{
 padding:18px 50px;
 font-size:24px;
@@ -30,33 +34,41 @@ border:none;
 border-radius:50px;
 cursor:pointer;
 position:absolute;
-box-shadow:0 0 15px rgba(255,0,100,.5);
-transition:.3s;
+box-shadow:0 0 20px rgba(255,0,100,.6);
+transition:0.3s;
 }
+
 #yes{
 background:#ff4081;
 color:white;
 left:35%;
-top:320px;
+top:350px;
 }
-#yes:hover{transform:scale(1.1);}
+
+#yes:hover{
+transform:scale(1.1);
+}
+
 #no{
-background:#444;
+background:#555;
 color:white;
 left:55%;
-top:320px;
+top:350px;
 }
+
 .heart{
 position:absolute;
 font-size:22px;
 animation:float 6s linear infinite;
 }
+
 @keyframes float{
 0%{top:100%;opacity:1;}
 100%{top:-10%;opacity:0;}
 }
 </style>
 </head>
+
 <body>
 
 <h1>Will you be my Bhondu Parnika? 💕</h1>
@@ -64,8 +76,8 @@ animation:float 6s linear infinite;
 <button id="yes" onclick="location.href='page2.html'">Yes 😘</button>
 <button id="no" onmouseover="run()">No 🙈</button>
 
-<audio autoplay loop>
-<source src="song.mp3">
+<audio id="bgm" loop>
+  <source src="song.mp3">
 </audio>
 
 <script>
@@ -73,14 +85,22 @@ function run(){
 document.getElementById("no").style.left=Math.random()*80+"%";
 document.getElementById("no").style.top=Math.random()*80+"%";
 }
+
+// floating hearts
 setInterval(()=>{
 let h=document.createElement("div");
 h.className="heart";
 h.innerHTML="💖";
 h.style.left=Math.random()*100+"%";
+h.style.fontSize=(Math.random()*20+15)+"px";
 document.body.appendChild(h);
 setTimeout(()=>h.remove(),6000);
-},400);
+},300);
+
+// start music on first click
+document.body.addEventListener("click",()=>{
+document.getElementById("bgm").play();
+});
 </script>
 
 </body>
