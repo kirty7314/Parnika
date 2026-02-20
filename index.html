@@ -71,8 +71,8 @@ animation:float 6s linear infinite;
 <button id="yes" onclick="goNext()">Yes 😘</button>
 <button id="no" onmouseover="run()">No 🙈</button>
 
-<audio id="bgm">
-  <source src="song.mp3">
+<audio id="bgm" autoplay loop playsinline preload="auto">
+  <source src="Boyfriend (1).mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -91,9 +91,18 @@ document.body.appendChild(h);
 setTimeout(()=>h.remove(),6000);
 },300);
 
+const music=document.getElementById("bgm");
+
+function tryPlayMusic(){
+music.play().catch(()=>{});
+}
+
+document.addEventListener("DOMContentLoaded", tryPlayMusic);
+document.addEventListener("click", tryPlayMusic, { once:true });
+document.addEventListener("keydown", tryPlayMusic, { once:true });
+
 function goNext(){
-let music=document.getElementById("bgm");
-music.play();
+tryPlayMusic();
 setTimeout(()=>{ location.href="page2.html"; }, 500);
 }
 </script>
